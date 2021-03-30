@@ -1,0 +1,35 @@
+<app-welcome></app-welcome>
+
+<h2>Deelnemers</h2>
+<div class="play-container">
+
+    <label id="new-persoon">Persoon naam </label>
+    <input for="new-persoon" #persoonNaam />
+    <label id="new-persoon">  Persoon bedrag: </label>
+    <input for="new-persoon" #persoonBedrag  class="form-control"  required pattern="^[0-9,.]*$" />
+  
+    
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="add-button" (click)="add(persoonNaam.value, persoonBedrag.value); persoonNaam.value=''; persoonBedrag.value=''" >
+      Add persoon
+    </button>
+    <h3>Naam van persoon mag alles zijn. Bedrag moet in cijfers.(Vak wordt anders rood(Werkt alleen in firefox))</h3>
+    
+  </div>
+<ul class="personen">
+    <li *ngFor="let persoon of personen">
+      <a >
+        <span class="badge">{{persoon.id}}</span> {{persoon.naam}} bedrag: {{persoon.bedrag}}
+      </a>
+      <button class="delete" title="delete persoon"
+  (click)="delete(persoon)">x</button>
+    </li>
+  </ul>
+
+  <button class="vereken-button" (click)="vereken(); " >
+    Vereken
+  </button>
+
+  <h2> {{resultaat}}</h2>
+
+  <app-persoon-search></app-persoon-search>

@@ -1,0 +1,12 @@
+<div id="search-component">
+  <label for="search-box">Persoon Search</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let persoon of personen$ | async" >
+      <a >
+        {{persoon.naam }} bedrag:{{persoon.bedrag}}
+      </a>
+    </li>
+  </ul>
+</div>
